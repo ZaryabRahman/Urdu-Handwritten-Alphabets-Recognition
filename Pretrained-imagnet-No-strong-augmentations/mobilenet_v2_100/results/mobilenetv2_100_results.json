@@ -1,0 +1,9 @@
+{
+    "Model": "mobilenetv2_100",
+    "Type": "CNN",
+    "Params (M)": 2.28,
+    "Train Time (s)": 991.64,
+    "Test Accuracy": 0.981,
+    "F1-Score (Macro)": 0.9569,
+    "Inference Time (ms/img)": 2.86
+}

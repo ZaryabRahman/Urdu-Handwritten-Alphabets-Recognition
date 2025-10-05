@@ -1,0 +1,9 @@
+{
+    "Model": "resnet18",
+    "Type": "CNN",
+    "Params (M)": 11.2,
+    "Train Time (s)": 965.95,
+    "Test Accuracy": 0.9882,
+    "F1-Score (Macro)": 0.9634,
+    "Inference Time (ms/img)": 3.06
+}

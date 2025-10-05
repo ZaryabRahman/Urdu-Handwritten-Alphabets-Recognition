@@ -1,0 +1,9 @@
+{
+    "Model": "deit_tiny_distilled_patch16_224",
+    "Type": "ViT",
+    "Params (M)": 5.54,
+    "Train Time (s)": 2680.62,
+    "Test Accuracy": 0.9743,
+    "F1-Score (Macro)": 0.9503,
+    "Inference Time (ms/img)": 3.05
+}

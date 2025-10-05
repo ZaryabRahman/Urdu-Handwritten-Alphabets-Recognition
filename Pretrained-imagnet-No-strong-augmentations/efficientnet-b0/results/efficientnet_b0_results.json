@@ -1,0 +1,9 @@
+{
+    "Model": "efficientnet_b0",
+    "Type": "CNN",
+    "Params (M)": 4.06,
+    "Train Time (s)": 2032.61,
+    "Test Accuracy": 0.9876,
+    "F1-Score (Macro)": 0.9629,
+    "Inference Time (ms/img)": 2.9
+}
