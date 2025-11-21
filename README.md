@@ -1,5 +1,14 @@
 # Beyond Clean Accuracy: A Deep Dive into the Robustness and Transferability of Vision Transformers for Urdu Handwritten Character Recognition
 
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.x-red.svg)
+![Made with ❤️](https://img.shields.io/badge/Made%20with-❤️-ff69b4.svg)
+![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-brightgreen.svg)
+![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)
+![Stars](https://img.shields.io/github/stars/<YOUR_USERNAME>/<YOUR_REPO>?style=social)
+![Forks](https://img.shields.io/github/forks/<YOUR_USERNAME>/<YOUR_REPO>?style=social)
+
 **Author:** Zaryab Rahman
 
 
