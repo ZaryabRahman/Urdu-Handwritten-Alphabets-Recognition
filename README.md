@@ -49,7 +49,13 @@ are not just accurate, but genuinely reliable for practical, real-world applicat
 
 ---
 
+
+
 ## 📊 Experiment 1: The Baseline (Clean Data)
+
+![CNN Model](https://img.shields.io/badge/Model-CNN-blue.svg)
+![Vision Transformer](https://img.shields.io/badge/Model-ViT-orange.svg)
+
 
 We first established a baseline on the uncorrupted UHAT dataset. CNNs initially dominate due to their inductive bias for local features (strokes and dots).
 
@@ -74,6 +80,9 @@ We first established a baseline on the uncorrupted UHAT dataset. CNNs initially 
 ---
 
 ## 🛡️ Experiment 2: Robustness Analysis (The Stress Test)
+
+![Robustness Tests](https://img.shields.io/badge/Robustness-Clean%20%2F%20Noise%20%2F%20Attacks-purple.svg)
+
 
 This is the core contribution of our work. We subjected all models to 6 types of corruption (Gaussian Noise, Motion Blur, etc.) at 5 severity levels.
 
@@ -100,6 +109,9 @@ This is the core contribution of our work. We subjected all models to 6 types of
 ---
 
 ## 🌍 Experiment 3: Cross-Lingual Transfer Learning
+
+![Transfer Learning](https://img.shields.io/badge/Transfer-Learning-success.svg)
+
 
 Standard ImageNet pre-training is suboptimal for handwriting. We hypothesized that pre-training on **Arabic** (visually similar to Urdu) would be superior.
 
