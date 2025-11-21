@@ -113,7 +113,7 @@ The **Swin Transformer** (Top) successfully reconstructs the character features 
 **DeiT** (Top) ignores the noise pixels and focuses on the stroke. **EfficientNet** (Bottom) gets confused by the noise and fails.
 
 <div align="center">
-  <img src="path/to/your/xai_salt_pepper.png" alt="XAI Salt and Pepper" width="500"/>
+  <img src="Data/XAI_RobustViT_vs_FragileCNN_SaltPepper.png" alt="XAI Salt and Pepper" width="500"/>
 </div>
 
 ---
