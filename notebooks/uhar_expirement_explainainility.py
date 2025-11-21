@@ -30,7 +30,7 @@ from pytorch_grad_cam import GradCAM
 from pytorch_grad_cam.utils.model_targets import ClassifierOutputTarget
 from pytorch_grad_cam.utils.image import show_cam_on_image
 
-# Suppress warnings from the visualization library
+
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning)
 
@@ -53,7 +53,7 @@ os.makedirs(CONFIG["xai_results_dir"], exist_ok=True)
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', handlers=[logging.StreamHandler()])
 logging.info(f"Using device: {DEVICE}")
 
-# Unzip data if not already present
+
 if not os.path.exists(CONFIG["data_path"]):
     !unzip -q "/content/archive (4).zip" -d "/content/uhar"
 
@@ -70,10 +70,8 @@ def create_test_dataset_pil(config):
     class_to_idx = train_dataset_for_mapping.class_to_idx
     class_names = train_dataset_for_mapping.classes
 
-    # Load test set with a loader that returns PIL images
     test_dataset = datasets.ImageFolder(test_dir, loader=lambda x: Image.open(x).convert("RGB"))
 
-    # Remap test set labels to match training set, handling case differences
     class_to_idx_lower = {k.lower(): v for k, v in class_to_idx.items()}
     valid_imgs = []
     for path, _ in test_dataset.imgs:
@@ -109,11 +107,9 @@ CNN_TARGET_LAYERS = {
     "mobilenetv2_100": lambda m: m.conv_head,
     "efficientnet_b0": lambda m: m.conv_head,
     "swin_tiny_patch4_window7_224": lambda m: m.layers[-1].blocks[-1],
-    # ADD THIS LINE for the DeiT model
     "deit_tiny_distilled_patch16_224": lambda m: m.blocks[-1].norm1
 }
 
-# Define the preprocessing transform for model input
 preprocess_transform = transforms.Compose([
     transforms.Resize((CONFIG["image_size"], CONFIG["image_size"])),
     transforms.ToTensor(),
@@ -139,25 +135,18 @@ def generate_grad_cam(model, image_tensor, target_layer_fn):
 
     attentions = []
     hooks = [
-        # This hook path is correct for DeiT models from timm
         block.attn.attn_drop.register_forward_hook(lambda module, input, output: attentions.append(output))
         for block in model.blocks
     ]
 
-    # --- FIX ---
-    # Temporarily switch to train() mode to ensure the dropout hooks fire.
-    # No gradients are computed, so this does not affect weights.
     model.train()
     with torch.no_grad():
         model(image_tensor)
-    # Immediately return to evaluation mode
     model.eval()
-    # --- END FIX ---
 
     for hook in hooks:
         hook.remove()
 
-    # Add a check to prevent crashing if no attention maps were captured
     if not attentions:
         raise RuntimeError("ERROR: Could not capture any attention maps from the model. "
                            "The hook on 'block.attn.attn_drop' is likely incorrect for this model's architecture.")
@@ -176,7 +165,7 @@ def generate_grad_cam(model, image_tensor, target_layer_fn):
     return mask / mask.max(), target_category'''
 
 def calculate_deletion_auc(model, image_tensor, explanation_map, true_class_idx):
-    """Calculates the Deletion Area Under the Curve (AUC). Lower is better."""
+    """calculates the Deletion Area Under the Curve (AUC). Lower is better."""
     num_pixels = image_tensor.shape[-2] * image_tensor.shape[-3]
     flat_map = explanation_map.flatten()
     sorted_indices = np.argsort(flat_map)[::-1]
@@ -211,25 +200,20 @@ def add_salt_and_pepper(img, prob): arr = np.array(img).copy(); h, w = arr.shape
 def motion_blur(img, radius):
   """
   """
-  # Convert PIL Image to NumPy array
   arr = np.array(img)
 
-  # CV2's GaussianBlur needs an odd kernel size. We'll derive it from the radius.
-  # A larger radius means more blur.
   kernel_size = int(radius)
   if kernel_size % 2 == 0:
       kernel_size += 1
 
-  # Apply the blur
   blurred_arr = cv2.GaussianBlur(arr, (kernel_size, kernel_size), 0)
 
-  # Convert back to PIL Image
   return Image.fromarray(blurred_arr)
 
 
 def find_case_study_image(robust_model, fragile_model, corruption_fn, severity, test_dataset, max_tries=500):
-    """Finds an image that the robust model gets right and the fragile model gets wrong."""
-    logging.info(f"Searching for case study: Robust={robust_model.name}, Fragile={fragile_model.name}...")
+    """finds an image that the robust model gets right and the fragile model gets wrong."""
+    logging.info(f"searching for case study: Robust={robust_model.name}, Fragile={fragile_model.name}...")
 
     for i in range(max_tries):
         pil_img, true_idx = random.choice(test_dataset.samples)
@@ -245,7 +229,7 @@ def find_case_study_image(robust_model, fragile_model, corruption_fn, severity, 
             logging.info(f"Found suitable image at index {i} for class '{class_names[true_idx]}'.")
             return pil_img, corrupted_pil, true_idx
 
-    logging.warning("Could not find a suitable case study image after many tries.")
+    logging.warning("could not find a suitable case study image after many tries.")
     return None, None, None
 
 all_results = []
@@ -283,7 +267,6 @@ def find_case_study_image(robust_model_name, fragile_model_name, robust_model, f
     return None, None, None
 
 
-# --- Main processing and visualization loop (FINAL VERSION) ---
 for name, params in case_studies.items():
     robust_model = models_loaded[params["robust"]]
     fragile_model = models_loaded[params["fragile"]]
@@ -316,16 +299,14 @@ for name, params in case_studies.items():
                 return result.permute(0, 3, 1, 2)
         elif 'deit' in model_name:
             def reshape_transform(tensor):
-                # The activation shape is (batch, 198, 192). Remove class/dist tokens, then reshape.
+                # the activation shape is (batch, 198, 192). remove class/dist tokens, then reshape.
                 result = tensor[:, 2:, :]
                 result = result.reshape(result.size(0), 14, 14, 192) # HARDCODED FIX
                 return result.permute(0, 3, 1, 2)
 
-        # NOTE: The use_cuda parameter might be deprecated. It's safe to remove if you get a warning.
         cam_algorithm = GradCAM(model=model, target_layers=[target_layer], reshape_transform=reshape_transform,)
         corrupted_map = cam_algorithm(input_tensor=corrupted_tensor, targets=targets)[0, :]
 
-        # Visualization
         vis_map = cv2.resize(corrupted_map, (CONFIG["image_size"], CONFIG["image_size"]))
         del_auc = calculate_deletion_auc(model, corrupted_tensor, corrupted_map, true_idx)
         all_results.append({"Case": name, "Model": model_name, "Deletion AUC": del_auc, "Correct": class_names[corrupted_pred_idx] == class_names[true_idx]})
@@ -346,14 +327,11 @@ for name, params in case_studies.items():
 results_df = pd.DataFrame(all_results)
 pivot_df = results_df.pivot_table(index="Case", columns="Model", values=["Deletion AUC", "Correct"])
 
-print("\n" + "="*80)
-print("           Quantitative Explainability Summary (On Corrupted Images)")
+print("quantitative Explainability Summary (On Corrupted Images)")
 print("="*80)
-print("\n--- Explanation Fidelity (Deletion AUC - Lower is Better) ---")
+print("explanation Fidelity (Deletion AUC - Lower is Better)")
 print(pivot_df["Deletion AUC"].to_string(float_format="%.4f"))
-print("\n--- Model Correctness on Selected Image ---")
+print("\model Correctness on Selected Image")
 print(pivot_df["Correct"])
-print("="*80)
 
-# Save the results to a CSV file
 pivot_df.to_csv(os.path.join(CONFIG["xai_results_dir"], "quantitative_xai_summary.csv"))
