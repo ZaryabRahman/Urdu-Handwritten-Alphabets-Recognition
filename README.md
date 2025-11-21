@@ -92,8 +92,7 @@ Standard ImageNet pre-training is suboptimal for handwriting. We hypothesized th
 | **Swin-Tiny** | **Arabic (Ours)** | **99.00** 🚀 | **0.96** | **3327** 📉 |
 
 <div align="center">
-  <!-- 🔴 PLACEHOLDER: Insert 'Figure 21' (The Transfer Learning Comparison Bar Chart) here -->
-  <img src="path/to/your/transfer_learning_plot.png" alt="Transfer Learning Impact" width="800"/>
+  <img src="Data/summary_comparison_arabic_vs_imagenet.png" alt="Transfer Learning Impact" width="800"/>
   <p><em>Fig 3: Arabic pre-training (Orange) consistently outperforms ImageNet pre-training (Blue) in both Accuracy and Speed.</em></p>
 </div>
 
