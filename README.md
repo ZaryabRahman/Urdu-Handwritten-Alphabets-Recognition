@@ -106,15 +106,13 @@ We utilized **Grad-CAM** to verify *why* Transformers are more robust.
 The **Swin Transformer** (Top) successfully reconstructs the character features despite the blur. **ResNet-18** (Bottom) fails, looking at the wrong features.
 
 <div align="center">
-  <!-- 🔴 PLACEHOLDER: Insert 'Figure 20' (Swin vs ResNet on Motion Blur) here -->
-  <img src="path/to/your/xai_motion_blur.png" alt="XAI Motion Blur" width="500"/>
+  <img src="Data/XAI_MotionBlur_Specialist_vs_Generalist.png" alt="XAI Motion Blur" width="500"/>
 </div>
 
 ### Case Study: Salt & Pepper Noise
 **DeiT** (Top) ignores the noise pixels and focuses on the stroke. **EfficientNet** (Bottom) gets confused by the noise and fails.
 
 <div align="center">
-  <!-- 🔴 PLACEHOLDER: Insert 'Figure 19' (DeiT vs EfficientNet on Salt & Pepper) here -->
   <img src="path/to/your/xai_salt_pepper.png" alt="XAI Salt and Pepper" width="500"/>
 </div>
 
