@@ -1,12 +1,12 @@
 # Beyond Clean Accuracy: A Deep Dive into the Robustness and Transferability of Vision Transformers for Urdu Handwritten Character Recognition
 
-**Authors:** Zaryab Rahman, Fakhrud Din, and Shah Khalid  
-*Department of Computer Science, University of Malakand, Pakistan*
+**Author:** Zaryab Rahman
+
 
 ---
 
 <div align="center">
-  <!-- 🔴 PLACEHOLDER: Insert 'framework_diagram.png' or 'Figure 1' from your paper here -->
+ 
   <img src="path/to/your/framework_diagram.png" alt="Study Framework" width="800"/>
   <p><em>Fig 1: The experimental framework comparing CNNs and ViTs across clean data, corrupted data, and cross-lingual transfer learning.</em></p>
 </div>
