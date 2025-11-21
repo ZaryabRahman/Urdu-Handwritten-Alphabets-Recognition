@@ -72,7 +72,7 @@ This is the core contribution of our work. We subjected all models to 6 types of
 
 <div align="center">
   <!-- 🔴 PLACEHOLDER: Insert 'Figure 11' (The Heatmap) here. This is visually very important. -->
-  <img src="path/to/your/robustness_heatmap.png" alt="Robustness Heatmap" width="700"/>
+  <img src="Data/robustness_auc_heatmap.png" alt="Robustness Heatmap" width="700"/>
   <p><em>Fig 2: Heatmap of Normalized Robustness AUC. Note the dark purple cells for lightweight CNNs indicating collapse under noise.</em></p>
 </div>
 
