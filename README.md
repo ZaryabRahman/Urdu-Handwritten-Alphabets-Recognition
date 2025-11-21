@@ -7,7 +7,7 @@
 
 <div align="center">
  
-  <img src="notebooks/complete-summary-of-paper-expirements.png" alt="Study Framework" width="800"/>
+  <img src="notebooks/complete-summary-of-paper-expirements.png" alt="Study Framework" width="800" height="800"/>
   <p><em>Fig 1: The experimental framework comparing CNNs and ViTs across clean data, corrupted data, and cross-lingual transfer learning.</em></p>
 </div>
 
@@ -44,7 +44,7 @@ We first established a baseline on the uncorrupted UHAT dataset. CNNs initially 
 
 <div align="center">
   <!-- 🔴 PLACEHOLDER: Insert 'Figure 2' (Bar Chart of Accuracy/F1) here -->
-  <img src="path/to/your/clean_accuracy_plot.png" alt="Baseline Accuracy" width="600"/>
+  <img src="Data/eff-vs-size.png" alt="Baseline Accuracy" width="600"/>
 </div>
 
 ---
