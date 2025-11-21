@@ -13,11 +13,23 @@
 
 ---
 
-## 🚀 Project Overview
+## Abstract
 
-Automated recognition of **Urdu Handwritten Characters** is a complex task due to the cursive Nastaliq script. Current research focuses almost exclusively on "clean" data accuracy, ignoring how models perform in the real world (scans with noise, blur, or compression).
-
-**This study challenges that paradigm.** We conducted the first systematic "stress test" of 7 modern architectures (CNNs vs. Vision Transformers) to answer: **Which models are actually reliable?**
+Automated recognition of complex scripts like Urdu is crucial for digitizing cultural
+heritage, yet the intricacy of its cursive style remains a significant barrier. Current benchmarks, however,
+focus almost exclusively on accuracy with clean data, largely ignoring the performance degradation
+models face under real-world conditions like noise and blurring. This creates a misleading picture of
+their practical viability. This work challenges that paradigm by presenting the first systematic robustness
+analysis of seven Convolutional Neural Network (CNN) and Vision Transformer (ViT) architectures for
+Urdu Handwritten Character Recognition. We also investigate the untapped potential of cross-lingual
+transfer learning from a visually similar Arabic script as an alternative to standard ImageNet pre-training.
+Our findings reveal a critical trade-off: lightweight CNNs, while efficient on clean data, are exceptionally
+brittle and fail under corruption. Conversely, Vision Transformers demonstrate remarkable resilience.
+When pre-trained on Arabic, the Swin Transformer not only becomes robust but also achieves state-of-
+the-art accuracy, surging from 92% to 99% which is a 7% absolute gain—while reducing training time
+by 40%. We conclude that the optimal architecture is not absolute but is contingent on the expected
+operational environment. This study provides a crucial, evidence-based guide for selecting models that
+are not just accurate, but genuinely reliable for practical, real-world applications.
 
 ### 💡 Key Breakthroughs
 1.  **The Fragility of Efficiency:** Lightweight CNNs (MobileNetV2, EfficientNet), while fast and accurate on clean data, **collapse** under noise.
