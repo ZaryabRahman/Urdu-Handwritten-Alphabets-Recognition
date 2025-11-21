@@ -43,8 +43,11 @@ We first established a baseline on the uncorrupted UHAT dataset. CNNs initially 
 | DeiT-Tiny | ViT | 5.54 | 2.16 | 0.9743 | 0.9503 | 3.05 |
 
 <div align="center">
-  <!-- 🔴 PLACEHOLDER: Insert 'Figure 2' (Bar Chart of Accuracy/F1) here -->
   <img src="Data/eff-vs-size.png" alt="Baseline Accuracy" width="600"/>
+</div>
+
+<div align="center">
+  <img src="Data/Acc-vs-f1-score.png" alt="Baseline Accuracy" width="600"/>
 </div>
 
 ---
