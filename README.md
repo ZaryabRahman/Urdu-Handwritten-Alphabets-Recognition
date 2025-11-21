@@ -7,7 +7,7 @@
 
 <div align="center">
  
-  <img src="notebooks/complete-summary-of-paper-expirements.png" alt="Study Framework" width="600" height="800"/>
+  <img src="notebooks/complete-summary-of-paper-expirements.png" alt="Study Framework" width="400" height="500"/>
   <p><em>Fig 1: The experimental framework comparing CNNs and ViTs across clean data, corrupted data, and cross-lingual transfer learning.</em></p>
 </div>
 
