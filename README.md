@@ -6,8 +6,8 @@
 ![Made with ❤️](https://img.shields.io/badge/Made%20with-❤️-ff69b4.svg)
 ![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-brightgreen.svg)
 ![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)
-![Stars](https://img.shields.io/github/stars/<YOUR_USERNAME>/<YOUR_REPO>?style=social)
-![Forks](https://img.shields.io/github/forks/<YOUR_USERNAME>/<YOUR_REPO>?style=social)
+![Stars](https://img.shields.io/github/stars/ZaryabRahman/Urdu-Handwritten-Alphabets-Recognition?style=social)
+![Forks](https://img.shields.io/github/forks/ZaryabRahman/Urdu-Handwritten-Alphabets-Recognition?style=social)
 
 **Author:** Zaryab Rahman
 
